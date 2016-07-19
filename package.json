@@ -1,0 +1,22 @@
+{
+  "name": "ACE",
+  "version": "0.1.1",
+  "description": "APEX Client Extension",
+  "main": "./background/main.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FOEXgmbh/apex-client-extension.git"
+  },
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Peter Raganitsch",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/FOEXgmbh/apex-client-extension/issues"
+  },
+  "homepage": "https://github.com/FOEXgmbh/apex-client-extension",
+  "devDependencies": {
+    "electron-prebuilt": "^1.2.7"
+  }
+}

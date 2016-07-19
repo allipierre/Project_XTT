@@ -1,0 +1,17 @@
+{
+  "configName"          : "Default Configuration File"
+, "startURL"            : "http://vbox:8080/ords/f?p=722"
+, "urlBlackList"        : []
+, "exposeProcessInfo"   : true
+, "exposeClipboard"     : true
+, "exposeIpcRenderer"   : true
+, "exposeNativeImage"   : false
+, "exposeShell"         : true
+, "exposeWebFrame"      : true
+, "exposeDialog"        : true
+, "exposeGlobalShortcut": true
+, "exposeMenu"          : false
+, "allowDevTools"       : false
+, "openDevToolsRenderer": false
+, "openDevToolsWebview" : false
+}
