@@ -1,3 +1,13 @@
+/**
+ * APEX Client Extension Browser
+ *
+ * This code gets executed by the Electron Renderer process. It is responsible
+ * for setting up and communicating to the Webview.
+ * The Renderer itself has no other visual elements than the Webview.
+ *
+ * @summary   Electron Renderer process.
+ *
+ */
 (function(require) { 'use strict'
 
   // ---------------------------------------------------------------------------

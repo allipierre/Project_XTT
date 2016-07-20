@@ -4,14 +4,14 @@
 , "urlBlackList"        : []
 , "exposeProcessInfo"   : true
 , "exposeClipboard"     : true
-, "exposeIpcRenderer"   : true
+, "exposeIpcRenderer"   : false
 , "exposeNativeImage"   : false
 , "exposeShell"         : true
-, "exposeWebFrame"      : true
-, "exposeDialog"        : true
-, "exposeGlobalShortcut": true
+, "exposeWebFrame"      : false
+, "exposeDialog"        : false
+, "exposeGlobalShortcut": false
 , "exposeMenu"          : false
 , "allowDevTools"       : false
 , "openDevToolsRenderer": false
-, "openDevToolsWebview" : false
+, "openDevToolsWebview" : true
 }

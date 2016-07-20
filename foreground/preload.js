@@ -1,14 +1,23 @@
-//
-// This module is loaded as "preload" in an Electron Webview and thus injects
-// some Electron modules into the loaded Website (=APEX Page)
-//
+/**
+ * APEX Client Extension Browser
+ *
+ * This module is loaded as "preload" in an Electron Webview and thus injects
+ * some global APIs into the loaded Website (=APEX Page).
+ * Those APIs encapsulate Electron method calls and communicate back to the Main
+ * process.
+ * For security reasons no Electron API should be available directly to the APEX
+ * Page loaded into the Webview.
+ *
+ * @summary   Webview Preload.
+ *
+ */
 
 //
-// Main namespace for the Rich APEX Browser.
+// Main namespace for the APEX Client Extension Browser.
 //
-window.rab = window.rab || {};
+window.apexce = window.apexce || {};
 
-window.rab.isActive = function () {
+window.apexce.isActive = function () {
   return true;
 }
 
@@ -170,21 +179,21 @@ window.initOpener = function(pWindowMgrId,pParentWindowMgrId) {
 //
 // Add Electron Process extension
 //
-if (config.exposeProcessInfo())    window.rab.process        = global.process;
+if (config.exposeProcessInfo())    window.apexce.processInfo    = require('./processInfo.js');
 
 //
 // Add Renderer Process Electron API's
 //
-if (config.exposeClipboard())      window.rab.clipboard      = require('electron').clipboard;
-if (config.exposeIpcRenderer())    window.rab.ipcRenderer    = ipcRenderer;
-if (config.exposeNativeImage())    window.rab.nativeImage    = require('electron').nativeImage;
-if (config.exposeShell())          window.rab.shell          = require('electron').shell;
-if (config.exposeWebFrame())       window.rab.webFrame       = require('electron').webFrame;
+if (config.exposeClipboard())      window.apexce.clipboard      = require('electron').clipboard;
+if (config.exposeIpcRenderer())    window.apexce.ipcRenderer    = ipcRenderer;
+if (config.exposeNativeImage())    window.apexce.nativeImage    = require('electron').nativeImage;
+if (config.exposeShell())          window.apexce.shell          = require('electron').shell;
+if (config.exposeWebFrame())       window.apexce.webFrame       = require('electron').webFrame;
 
 //
 // Add selected Main Process Electron API's
 //
-if (config.exposeDialog())         window.rab.dialog         = require('electron').remote.dialog;
-if (config.exposeGlobalShortcut()) window.rab.globalShortcut = require('electron').remote.globalShortcut;
-if (config.exposeMenu())           window.rab.Menu           = require('electron').remote.Menu;
-if (config.exposeMenu())           window.rab.MenuItem       = require('electron').remote.MenuItem;
+if (config.exposeDialog())         window.apexce.dialog         = require('electron').remote.dialog;
+if (config.exposeGlobalShortcut()) window.apexce.globalShortcut = require('electron').remote.globalShortcut;
+if (config.exposeMenu())           window.apexce.Menu           = require('electron').remote.Menu;
+if (config.exposeMenu())           window.apexce.MenuItem       = require('electron').remote.MenuItem;

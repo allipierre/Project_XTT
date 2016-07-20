@@ -1,4 +1,13 @@
 'use strict';
+/**
+ * This is the main entry point for the APEX Client Extension Browser.
+ *
+ * It is called when starting up Electron and is the Main (or Background) Process.
+ * In here we handle all Windows and also the access to the clients ressources.
+ *
+ * @summary   Electron Main process.
+ *
+ */
 
 // get app configuration settings
 const config = require('../common/config.js');

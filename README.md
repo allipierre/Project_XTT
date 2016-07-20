@@ -1,10 +1,10 @@
-# APEX Client Extension - ACE
+# APEX Client Extension (ACE)
 
 **Clone and run for a quick way to see the ACE Browser in action.**
 
 This is a configurable Browser based on the awesome [Electron](http://electron.atom.io). It adds several client-features to your Oracle APEX application.
 
-All you need to change is the `features.json` file, where you define which features should be enabled in your APEX application:
+All you need to change is the [`features.json`](doc/features.md) file, where you define which features should be enabled in your APEX application:
 
 - access to the clipboard
 - definition of global keyboard shortcuts
@@ -31,3 +31,5 @@ npm install && npm start
 Learn more about ACE and its API in the [documentation](doc/doc.md).
 
 #### License: [MIT](LICENSE.md)
+
+A big "Thank You" goes to [FOEX](https://www.tryfoexnow.com) for sponsoring this project.

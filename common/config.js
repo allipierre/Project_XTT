@@ -1,3 +1,15 @@
+/**
+ * APEX Client Extension Browser
+ *
+ * This module provides some utility functions to determine which options should
+ * be enabled, according to the features.json file.
+ * Main and Renderer process (and its Webview preload) use those functions and
+ * provide only those APIs which should be available.
+ *
+ * @summary   Config setting utility.
+ *
+ */
+
 //
 // load config settings
 //
