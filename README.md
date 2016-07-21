@@ -14,6 +14,10 @@ All you need to change is the [`features.json`](doc/features.md) file, where you
 - run shell scripts on client
 - many more to come
 
+# Watch out: still in early Alpha status !!
+Don't just grab the sources and use them in production, we are in a very early stage and everything can still change.
+
+There are also some technical hurdles we still have to take, bevor everything will work and be stable.
 
 ## To Use
 
@@ -28,8 +32,13 @@ cd apex-client-extension
 npm install && npm start
 ```
 
-Learn more about ACE and its API in the [documentation](doc/doc.md).
+Learn more about the APEX Client Extension and its API in the [documentation](doc/doc.md).
+
+## Roadmap
+Documentation, more APIs, Security, Demos...
+
+**Want to get involved and contribute?** Mail me at [peter.raganitsch@tryfoexnow.com](mailto:peter.raganitsch@tryfoexnow.com)
 
 #### License: [MIT](LICENSE.md)
 
-A big "Thank You" goes to [FOEX](https://www.tryfoexnow.com) for sponsoring this project.
+A big **"Thank You"** goes to [FOEX](https://www.tryfoexnow.com) for sponsoring this project.

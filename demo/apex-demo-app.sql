@@ -27,7 +27,7 @@ prompt APPLICATION 722 - APEX Client Extension - TestApp
 -- Application Export:
 --   Application:     722
 --   Name:            APEX Client Extension - TestApp
---   Date and Time:   17:51 Wednesday July 20, 2016
+--   Date and Time:   03:33 Thursday July 21, 2016
 --   Exported By:     PRAGANITSCH
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -36,12 +36,12 @@ prompt APPLICATION 722 - APEX Client Extension - TestApp
 --
 
 -- Application Statistics:
---   Pages:                      7
---     Items:                   14
+--   Pages:                      8
+--     Items:                   18
 --     Processes:                4
---     Regions:                  9
---     Buttons:                  7
---     Dynamic Actions:          7
+--     Regions:                 10
+--     Buttons:                  9
+--     Dynamic Actions:         10
 --   Shared Components:
 --     Logic:
 --     Navigation:
@@ -106,7 +106,7 @@ wwv_flow_api.create_flow(
 ,p_rejoin_existing_sessions=>'N'
 ,p_csv_encoding=>'Y'
 ,p_last_updated_by=>'PRAGANITSCH'
-,p_last_upd_yyyymmddhh24miss=>'20160720175039'
+,p_last_upd_yyyymmddhh24miss=>'20160721032534'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_ui_type_name => null
 );
@@ -158,6 +158,14 @@ wwv_flow_api.create_list_item(
 ,p_list_item_link_target=>'f?p=&APP_ID.:6:&SESSION.::&DEBUG.'
 ,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
 ,p_list_item_current_for_pages=>'6'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(19330746359448219)
+,p_list_item_display_sequence=>60
+,p_list_item_link_text=>'webFrame'
+,p_list_item_link_target=>'f?p=&APP_ID.:7:&SESSION.::&DEBUG.'
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'7'
 );
 wwv_flow_api.create_list(
  p_id=>wwv_flow_api.id(18853220404226176)
@@ -8021,7 +8029,7 @@ wwv_flow_api.create_page(
 ,p_cache_mode=>'NOCACHE'
 ,p_help_text=>'No help is available for this page.'
 ,p_last_updated_by=>'PRAGANITSCH'
-,p_last_upd_yyyymmddhh24miss=>'20160719065855'
+,p_last_upd_yyyymmddhh24miss=>'20160721032534'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(18533462846763817)
@@ -8031,6 +8039,11 @@ wwv_flow_api.create_page_plug(
 ,p_plug_display_sequence=>10
 ,p_include_in_reg_disp_sel_yn=>'Y'
 ,p_plug_display_point=>'BODY'
+,p_plug_item_display_point=>'BELOW'
+,p_plug_source=>wwv_flow_utilities.join(wwv_flow_t_varchar2(
+'<p>',
+'  Please ignore, this is just an experimental test and will be replaced later on with a more secure version.',
+'</p>'))
 ,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'HTML'
@@ -8045,7 +8058,8 @@ wwv_flow_api.create_page_button(
 ,p_button_template_id=>wwv_flow_api.id(18848142176226151)
 ,p_button_image_alt=>'Run'
 ,p_button_position=>'BODY'
-,p_grid_new_row=>'Y'
+,p_grid_new_row=>'N'
+,p_grid_new_column=>'Y'
 );
 wwv_flow_api.create_page_item(
  p_id=>wwv_flow_api.id(18533521598763818)
@@ -8061,6 +8075,22 @@ wwv_flow_api.create_page_item(
 ,p_attribute_02=>'N'
 ,p_attribute_04=>'TEXT'
 ,p_attribute_05=>'BOTH'
+);
+wwv_flow_api.create_page_item(
+ p_id=>wwv_flow_api.id(19250888688957208)
+,p_name=>'P2_OUTPUT'
+,p_item_sequence=>30
+,p_item_plug_id=>wwv_flow_api.id(18533462846763817)
+,p_prompt=>'Output'
+,p_display_as=>'NATIVE_TEXTAREA'
+,p_cSize=>60
+,p_cHeight=>8
+,p_field_template=>wwv_flow_api.id(18847639845226149)
+,p_item_template_options=>'#DEFAULT#'
+,p_attribute_01=>'Y'
+,p_attribute_02=>'N'
+,p_attribute_03=>'N'
+,p_attribute_04=>'BOTH'
 );
 wwv_flow_api.create_page_da_event(
  p_id=>wwv_flow_api.id(18533715490763820)
@@ -8080,9 +8110,10 @@ wwv_flow_api.create_page_da_action(
 ,p_action=>'NATIVE_JAVASCRIPT_CODE'
 ,p_attribute_01=>wwv_flow_utilities.join(wwv_flow_t_varchar2(
 '// send command to main-process and wait for reply',
-'var vId = rab.ipcRenderer.sendSync(''runCommand'', $v("P2_COMMAND"));',
+'var vId = apexce.ipcRenderer.sendSync(''runCommand'', $v("P2_COMMAND"));',
 '',
-'rab.ipcRenderer.once(''runCommandOutput_''+vId, function(event,error,stdout,stderr){',
+'apexce.ipcRenderer.once(''runCommandOutput_''+vId, function(event,error,stdout,stderr){',
+'    $s(''P2_OUTPUT'',stdout);',
 '    console.log(''runCommandOutput'',event,error,stdout,stderr);',
 '});',
 ''))
@@ -8719,6 +8750,183 @@ wwv_flow_api.create_page_da_action(
 ,p_execute_on_page_init=>'N'
 ,p_action=>'NATIVE_JAVASCRIPT_CODE'
 ,p_attribute_01=>'apexce.shell.openItem($v(''P6_OPEN''));'
+);
+end;
+/
+prompt --application/pages/page_00007
+begin
+wwv_flow_api.create_page(
+ p_id=>7
+,p_user_interface_id=>wwv_flow_api.id(18853348771226178)
+,p_name=>'webFrame'
+,p_page_mode=>'NORMAL'
+,p_step_title=>'webFrame'
+,p_step_sub_title=>'webFrame'
+,p_step_sub_title_type=>'TEXT_WITH_SUBSTITUTIONS'
+,p_first_item=>'NO_FIRST_ITEM'
+,p_javascript_code_onload=>wwv_flow_utilities.join(wwv_flow_t_varchar2(
+'$s(''P7_LEVEL'',apexce.webFrame.getZoomLevel());',
+'$s(''P7_FACTOR'',apexce.webFrame.getZoomFactor());',
+'$s(''P7_USAGE'',JSON.stringify(apexce.webFrame.getResourceUsage()));'))
+,p_page_template_options=>'#DEFAULT#'
+,p_overwrite_navigation_list=>'N'
+,p_page_is_public_y_n=>'N'
+,p_cache_mode=>'NOCACHE'
+,p_help_text=>'No help is available for this page.'
+,p_last_updated_by=>'PRAGANITSCH'
+,p_last_upd_yyyymmddhh24miss=>'20160721032137'
+);
+wwv_flow_api.create_page_plug(
+ p_id=>wwv_flow_api.id(19331164478448228)
+,p_plug_name=>'apexce.webFrame'
+,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
+,p_plug_template=>wwv_flow_api.id(18827176422226126)
+,p_plug_display_sequence=>10
+,p_include_in_reg_disp_sel_yn=>'Y'
+,p_plug_display_point=>'BODY'
+,p_plug_item_display_point=>'BELOW'
+,p_plug_source=>wwv_flow_utilities.join(wwv_flow_t_varchar2(
+'<p>',
+'   webFrame provides some functions to get/set the browser zoom and usage.',
+'</p>',
+'<p>',
+'  Please read the documentation for details and explanation.',
+'</p>'))
+,p_plug_query_row_template=>1
+,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
+,p_attribute_01=>'N'
+,p_attribute_02=>'HTML'
+);
+wwv_flow_api.create_page_button(
+ p_id=>wwv_flow_api.id(19331973617448239)
+,p_button_sequence=>40
+,p_button_plug_id=>wwv_flow_api.id(19331164478448228)
+,p_button_name=>'SetLevel'
+,p_button_action=>'DEFINED_BY_DA'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>wwv_flow_api.id(18848142176226151)
+,p_button_image_alt=>'Set Level'
+,p_button_position=>'BODY'
+,p_grid_new_row=>'N'
+,p_grid_new_column=>'Y'
+);
+wwv_flow_api.create_page_button(
+ p_id=>wwv_flow_api.id(19332360388448240)
+,p_button_sequence=>60
+,p_button_plug_id=>wwv_flow_api.id(19331164478448228)
+,p_button_name=>'SetFactor'
+,p_button_action=>'DEFINED_BY_DA'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>wwv_flow_api.id(18848142176226151)
+,p_button_image_alt=>'Set Factor'
+,p_button_position=>'BODY'
+,p_grid_new_row=>'N'
+,p_grid_new_column=>'Y'
+);
+wwv_flow_api.create_page_item(
+ p_id=>wwv_flow_api.id(19250791823957107)
+,p_name=>'P7_USAGE'
+,p_item_sequence=>70
+,p_item_plug_id=>wwv_flow_api.id(19331164478448228)
+,p_prompt=>'webFrame.getResourceUsage()'
+,p_display_as=>'NATIVE_TEXTAREA'
+,p_cSize=>60
+,p_cHeight=>8
+,p_field_template=>wwv_flow_api.id(18847639845226149)
+,p_item_template_options=>'#DEFAULT#'
+,p_attribute_01=>'Y'
+,p_attribute_02=>'N'
+,p_attribute_03=>'N'
+,p_attribute_04=>'BOTH'
+);
+wwv_flow_api.create_page_item(
+ p_id=>wwv_flow_api.id(19332774446448242)
+,p_name=>'P7_LEVEL'
+,p_item_sequence=>30
+,p_item_plug_id=>wwv_flow_api.id(19331164478448228)
+,p_prompt=>'webFrame.setZoomLevel(level)'
+,p_display_as=>'NATIVE_TEXT_FIELD'
+,p_cSize=>60
+,p_field_template=>wwv_flow_api.id(18847639845226149)
+,p_item_template_options=>'#DEFAULT#'
+,p_attribute_01=>'N'
+,p_attribute_02=>'N'
+,p_attribute_04=>'TEXT'
+,p_attribute_05=>'BOTH'
+);
+wwv_flow_api.create_page_item(
+ p_id=>wwv_flow_api.id(19333179673448247)
+,p_name=>'P7_FACTOR'
+,p_item_sequence=>50
+,p_item_plug_id=>wwv_flow_api.id(19331164478448228)
+,p_prompt=>'webFrame.setZoomFactor(factor)'
+,p_display_as=>'NATIVE_TEXT_FIELD'
+,p_cSize=>60
+,p_field_template=>wwv_flow_api.id(18847639845226149)
+,p_item_template_options=>'#DEFAULT#'
+,p_attribute_01=>'N'
+,p_attribute_02=>'N'
+,p_attribute_04=>'TEXT'
+,p_attribute_05=>'BOTH'
+);
+wwv_flow_api.create_page_da_event(
+ p_id=>wwv_flow_api.id(19333549101448266)
+,p_name=>'change'
+,p_event_sequence=>10
+,p_triggering_element_type=>'ITEM'
+,p_triggering_element=>'P7_FACTOR'
+,p_bind_type=>'bind'
+,p_bind_event_type=>'change'
+);
+wwv_flow_api.create_page_da_action(
+ p_id=>wwv_flow_api.id(19334071181448267)
+,p_event_id=>wwv_flow_api.id(19333549101448266)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>'apexce.clipboard.writeText($v(''P7_WRITE''));'
+,p_stop_execution_on_error=>'Y'
+);
+wwv_flow_api.create_page_da_event(
+ p_id=>wwv_flow_api.id(19335370624448269)
+,p_name=>'setLevel'
+,p_event_sequence=>30
+,p_triggering_element_type=>'BUTTON'
+,p_triggering_button_id=>wwv_flow_api.id(19331973617448239)
+,p_bind_type=>'bind'
+,p_bind_event_type=>'click'
+);
+wwv_flow_api.create_page_da_action(
+ p_id=>wwv_flow_api.id(19335837071448269)
+,p_event_id=>wwv_flow_api.id(19335370624448269)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>wwv_flow_utilities.join(wwv_flow_t_varchar2(
+'apexce.webFrame.setZoomLevel(parseFloat($v(''P7_LEVEL'')));',
+'$s(''P7_FACTOR'',apexce.webFrame.getZoomFactor());'))
+);
+wwv_flow_api.create_page_da_event(
+ p_id=>wwv_flow_api.id(19336234448448269)
+,p_name=>'setFactor'
+,p_event_sequence=>40
+,p_triggering_element_type=>'BUTTON'
+,p_triggering_button_id=>wwv_flow_api.id(19332360388448240)
+,p_bind_type=>'bind'
+,p_bind_event_type=>'click'
+);
+wwv_flow_api.create_page_da_action(
+ p_id=>wwv_flow_api.id(19336759497448270)
+,p_event_id=>wwv_flow_api.id(19336234448448269)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>wwv_flow_utilities.join(wwv_flow_t_varchar2(
+'apexce.webFrame.setZoomFactor(parseFloat($v(''P7_FACTOR'')));',
+'$s(''P7_LEVEL'',apexce.webFrame.getZoomLevel());'))
 );
 end;
 /

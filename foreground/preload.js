@@ -26,7 +26,7 @@ window.apexce.isActive = function () {
 //
 const config = require('../common/config.js');
 
-const {ipcRenderer} = require('electron');
+const {ipcRenderer,webFrame} = require('electron');
 
 //
 // do some filtering based on the loaded page
@@ -188,7 +188,7 @@ if (config.exposeClipboard())      window.apexce.clipboard      = require('elect
 if (config.exposeIpcRenderer())    window.apexce.ipcRenderer    = ipcRenderer;
 if (config.exposeNativeImage())    window.apexce.nativeImage    = require('electron').nativeImage;
 if (config.exposeShell())          window.apexce.shell          = require('electron').shell;
-if (config.exposeWebFrame())       window.apexce.webFrame       = require('electron').webFrame;
+if (config.exposeWebFrame())       window.apexce.webFrame       = require('./webFrame.js');
 
 //
 // Add selected Main Process Electron API's
