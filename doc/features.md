@@ -10,17 +10,18 @@ Here are all the options with their default value
 
 	{
 	  "configName"          : "Default Configuration File"
-	, "startURL"            : "http://apex.oracle.com/pls/apex/f?p=722"
+	, "startURL"            : "https://apex.oracle.com/pls/apex/f?p=APEXCE"
 	, "urlBlackList"        : []
-	, "exposeProcessInfo"   : false
-	, "exposeClipboard"     : true
+	, "exposeClipboard"     : false
+	, "exposeDialog"        : false
+	, "exposeFs"            : false
+	, "exposeGlobalShortcut": false
 	, "exposeIpcRenderer"   : false
+	, "exposeMenu"          : false
 	, "exposeNativeImage"   : false
+	, "exposeProcessInfo"   : false
 	, "exposeShell"         : false
 	, "exposeWebFrame"      : false
-	, "exposeDialog"        : false
-	, "exposeGlobalShortcut": false
-	, "exposeMenu"          : false
 	, "allowDevTools"       : false
 	, "openDevToolsRenderer": false
 	, "openDevToolsWebview" : false
@@ -35,17 +36,29 @@ The initial Page/App that will be loaded when starting the ACE Browser.
 ###urlBlacklist
 Array of regexp strings on which URLs (APEX Pages/Apps) below features should not be injected to.
 
-###exposeProcessInfo
-Get access to process information, memory consumption.
-
 ###exposeClipboard
 Read from and write to the system clipboard.
+
+###exposeDialog
+Create OS Dialogs instead of Browser Dialogs (more native look and feel).
+
+###exposeFs
+Fs means Filesystem and exposes methods to browse directories and read/write files.
+
+###exposeGlobalShortcut
+Functions to set OS wide keyboard shortcuts.
 
 ###exposeIpcRenderer
 Communication tool to send messages to the background/main process, where you can integrate any Node module. You should avoid using that, since this exposes a big security risk. An exploit here could let the attacker get full access to a client system.
 
+###exposeMenu
+Provide API to create Window-Menu and/or Context Menues.
+
 ###exposeNativeImage
 Manipulate Images.
+
+###exposeProcessInfo
+Get access to process information, memory consumption.
 
 ###exposeShell
 Open links in external applications, open items in folder, move items to trash...
@@ -53,20 +66,11 @@ Open links in external applications, open items in folder, move items to trash..
 ###exposeWebFrame
 API to change Browser Zoom, Font Size and such.
 
-###exposeDialog
-Create OS Dialogs instead of Browser Dialogs (more native look and feel).
-
-###exposeGlobalShortcut
-Functions to set OS wide keyboard shortcuts.
-
-###exposeMenu
-Provide API to create Window-Menu and/or Context Menues.
-
 ###allowDevTools
 Should a user be able to open Developer Tools (e.g. through API or keyboard shortcut)?
 
 ###openDevToolsRenderer
-Opens the browsers developer tools for the **Renderer** when opening a Window.
+Opens the browsers developer tools for the **Renderer** when opening a Window. This is meant for development only.
 
 ###openDevToolsWebview
-Opens the browsers developer tools for the **Webview** when opening a Window.
+Opens the browsers developer tools for the **Webview** when opening a Window. This is meant for development only.

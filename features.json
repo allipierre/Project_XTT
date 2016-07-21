@@ -1,17 +1,20 @@
 {
   "configName"          : "Default Configuration File"
-, "startURL"            : "http://vbox:8080/ords/f?p=722"
+, "startURL"            : "https://apex.oracle.com/pls/apex/f?p=APEXCE"
 , "urlBlackList"        : []
-, "exposeProcessInfo"   : true
+
 , "exposeClipboard"     : true
-, "exposeIpcRenderer"   : false
-, "exposeNativeImage"   : false
-, "exposeShell"         : true
-, "exposeWebFrame"      : false
 , "exposeDialog"        : false
+, "exposeFs"            : true
 , "exposeGlobalShortcut": false
+, "exposeIpcRenderer"   : true
 , "exposeMenu"          : false
-, "allowDevTools"       : false
+, "exposeNativeImage"   : false
+, "exposeProcessInfo"   : true
+, "exposeShell"         : true
+, "exposeWebFrame"      : true
+
+, "allowDevTools"       : true
 , "openDevToolsRenderer": false
-, "openDevToolsWebview" : true
+, "openDevToolsWebview" : false
 }

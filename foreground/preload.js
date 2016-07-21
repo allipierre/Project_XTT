@@ -177,23 +177,16 @@ window.initOpener = function(pWindowMgrId,pParentWindowMgrId) {
 
 
 //
-// Add Electron Process extension
-//
-if (config.exposeProcessInfo())    window.apexce.processInfo    = require('./processInfo.js');
-
-//
-// Add Renderer Process Electron API's
+// Add various APIs, according to the features.json configuration
 //
 if (config.exposeClipboard())      window.apexce.clipboard      = require('electron').clipboard;
-if (config.exposeIpcRenderer())    window.apexce.ipcRenderer    = ipcRenderer;
-if (config.exposeNativeImage())    window.apexce.nativeImage    = require('electron').nativeImage;
-if (config.exposeShell())          window.apexce.shell          = require('electron').shell;
-if (config.exposeWebFrame())       window.apexce.webFrame       = require('./webFrame.js');
-
-//
-// Add selected Main Process Electron API's
-//
 if (config.exposeDialog())         window.apexce.dialog         = require('electron').remote.dialog;
+if (config.exposeFs())             window.apexce.fs             = require('./fs.js');
 if (config.exposeGlobalShortcut()) window.apexce.globalShortcut = require('electron').remote.globalShortcut;
 if (config.exposeMenu())           window.apexce.Menu           = require('electron').remote.Menu;
 if (config.exposeMenu())           window.apexce.MenuItem       = require('electron').remote.MenuItem;
+if (config.exposeIpcRenderer())    window.apexce.ipcRenderer    = ipcRenderer;
+if (config.exposeNativeImage())    window.apexce.nativeImage    = require('electron').nativeImage;
+if (config.exposeProcessInfo())    window.apexce.processInfo    = require('./processInfo.js');
+if (config.exposeShell())          window.apexce.shell          = require('electron').shell;
+if (config.exposeWebFrame())       window.apexce.webFrame       = require('./webFrame.js');

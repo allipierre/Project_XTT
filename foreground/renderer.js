@@ -96,6 +96,21 @@
     webview.loadURL(pUrl);
   });
 
+  // reloads webview
+  ipcRenderer.on("reload", function(event) {
+    webview.loadURL(webview.getURL());
+  });
+
+  // toggle devTools in webview
+  ipcRenderer.on("toggleDevTools", function(event) {
+    if (webview.isDevToolsOpened()) {
+      webview.closeDevTools();
+    } else {
+      webview.openDevTools();
+    }
+
+  });
+
   // set our internal window-id
   ipcRenderer.on("setWindowMgrId", function(event, pWindowMgrId) {
     // store the information in the renderer-window

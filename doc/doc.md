@@ -15,6 +15,12 @@ Current available APIs:
 * [webFrame](http://electron.atom.io/docs/api/web-frame/)
 
 
+# Known Issues
+
+* iFrames (like a modal page in APEX) need to access the APIs through `top.apexce.<API>`
+* ...this could probably be an endless list, since this is still Alpha..
+
+
 # Roadmap
 
 We are looking to provide also this functionality

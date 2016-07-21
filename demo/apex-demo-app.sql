@@ -27,7 +27,7 @@ prompt APPLICATION 722 - APEX Client Extension - TestApp
 -- Application Export:
 --   Application:     722
 --   Name:            APEX Client Extension - TestApp
---   Date and Time:   03:33 Thursday July 21, 2016
+--   Date and Time:   10:52 Thursday July 21, 2016
 --   Exported By:     PRAGANITSCH
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -36,12 +36,12 @@ prompt APPLICATION 722 - APEX Client Extension - TestApp
 --
 
 -- Application Statistics:
---   Pages:                      8
---     Items:                   18
+--   Pages:                      9
+--     Items:                   20
 --     Processes:                4
---     Regions:                 10
+--     Regions:                 11
 --     Buttons:                  9
---     Dynamic Actions:         10
+--     Dynamic Actions:         12
 --   Shared Components:
 --     Logic:
 --     Navigation:
@@ -95,7 +95,7 @@ wwv_flow_api.create_flow(
 ,p_authentication=>'PLUGIN'
 ,p_authentication_id=>wwv_flow_api.id(18855970185234520)
 ,p_application_tab_set=>0
-,p_logo_image=>'TEXT:APEX Client Extension - TestApp'
+,p_logo_image=>'TEXT:APEX Client Extension - TestApp - &APP_SESSION.'
 ,p_proxy_server=> nvl(wwv_flow_application_install.get_proxy,'')
 ,p_flow_version=>'release 1.0'
 ,p_flow_status=>'AVAILABLE_W_EDIT_LINK'
@@ -106,7 +106,7 @@ wwv_flow_api.create_flow(
 ,p_rejoin_existing_sessions=>'N'
 ,p_csv_encoding=>'Y'
 ,p_last_updated_by=>'PRAGANITSCH'
-,p_last_upd_yyyymmddhh24miss=>'20160721032534'
+,p_last_upd_yyyymmddhh24miss=>'20160721105011'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_ui_type_name => null
 );
@@ -166,6 +166,14 @@ wwv_flow_api.create_list_item(
 ,p_list_item_link_target=>'f?p=&APP_ID.:7:&SESSION.::&DEBUG.'
 ,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
 ,p_list_item_current_for_pages=>'7'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(19370824132485913)
+,p_list_item_display_sequence=>70
+,p_list_item_link_text=>'fs'
+,p_list_item_link_target=>'f?p=&APP_ID.:8:&SESSION.::&DEBUG.'
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'8'
 );
 wwv_flow_api.create_list(
  p_id=>wwv_flow_api.id(18853220404226176)
@@ -7878,7 +7886,7 @@ wwv_flow_api.create_page(
 ,p_cache_mode=>'NOCACHE'
 ,p_help_text=>'No help is available for this page.'
 ,p_last_updated_by=>'PRAGANITSCH'
-,p_last_upd_yyyymmddhh24miss=>'20160720174901'
+,p_last_upd_yyyymmddhh24miss=>'20160721105011'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(18532957214763812)
@@ -7897,7 +7905,7 @@ wwv_flow_api.create_page_plug(
 'Simply by running your APEX Application inside this browser, you''ll get access to new Javascript Objects which allow you to run commands on the client system.',
 '</p>',
 '<p>',
-'To test this browsers window functionality you can recursively open <a href="http://vbox:8080/ords/f?p=&APP_ID.:1:&SESSION." target="_blank">this Page.</a>',
+'To test this browsers window functionality you can recursively open <a href="f?p=&APP_ID.:1:&SESSION." target="_blank">this Page.</a>',
 '</p>',
 '',
 '',
@@ -8586,7 +8594,7 @@ wwv_flow_api.create_page(
 ,p_cache_mode=>'NOCACHE'
 ,p_help_text=>'No help is available for this page.'
 ,p_last_updated_by=>'PRAGANITSCH'
-,p_last_upd_yyyymmddhh24miss=>'20160720174954'
+,p_last_upd_yyyymmddhh24miss=>'20160721084543'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(19241074905925745)
@@ -8599,7 +8607,7 @@ wwv_flow_api.create_page_plug(
 ,p_plug_item_display_point=>'BELOW'
 ,p_plug_source=>wwv_flow_utilities.join(wwv_flow_t_varchar2(
 '<p>',
-'   clipboard gives you full access to the system clipboard. You can read from the clipboard and also write to it.',
+'   shell provides some utility functions, like opening folders or files in their default app.',
 '</p>',
 '<p>',
 '  Please read the documentation for details and explanation.',
@@ -8760,7 +8768,7 @@ wwv_flow_api.create_page(
 ,p_user_interface_id=>wwv_flow_api.id(18853348771226178)
 ,p_name=>'webFrame'
 ,p_page_mode=>'NORMAL'
-,p_step_title=>'webFrame'
+,p_step_title=>'apexce.webFrame'
 ,p_step_sub_title=>'webFrame'
 ,p_step_sub_title_type=>'TEXT_WITH_SUBSTITUTIONS'
 ,p_first_item=>'NO_FIRST_ITEM'
@@ -8774,7 +8782,7 @@ wwv_flow_api.create_page(
 ,p_cache_mode=>'NOCACHE'
 ,p_help_text=>'No help is available for this page.'
 ,p_last_updated_by=>'PRAGANITSCH'
-,p_last_upd_yyyymmddhh24miss=>'20160721032137'
+,p_last_upd_yyyymmddhh24miss=>'20160721084649'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(19331164478448228)
@@ -8927,6 +8935,117 @@ wwv_flow_api.create_page_da_action(
 ,p_attribute_01=>wwv_flow_utilities.join(wwv_flow_t_varchar2(
 'apexce.webFrame.setZoomFactor(parseFloat($v(''P7_FACTOR'')));',
 '$s(''P7_LEVEL'',apexce.webFrame.getZoomLevel());'))
+);
+end;
+/
+prompt --application/pages/page_00008
+begin
+wwv_flow_api.create_page(
+ p_id=>8
+,p_user_interface_id=>wwv_flow_api.id(18853348771226178)
+,p_name=>'fs'
+,p_page_mode=>'NORMAL'
+,p_step_title=>'apexce.fs'
+,p_step_sub_title=>'fs'
+,p_step_sub_title_type=>'TEXT_WITH_SUBSTITUTIONS'
+,p_first_item=>'NO_FIRST_ITEM'
+,p_page_template_options=>'#DEFAULT#'
+,p_overwrite_navigation_list=>'N'
+,p_page_is_public_y_n=>'N'
+,p_cache_mode=>'NOCACHE'
+,p_help_text=>'No help is available for this page.'
+,p_last_updated_by=>'PRAGANITSCH'
+,p_last_upd_yyyymmddhh24miss=>'20160721085200'
+);
+wwv_flow_api.create_page_plug(
+ p_id=>wwv_flow_api.id(19371209060485920)
+,p_plug_name=>'apexce.fs'
+,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
+,p_plug_template=>wwv_flow_api.id(18827176422226126)
+,p_plug_display_sequence=>10
+,p_include_in_reg_disp_sel_yn=>'Y'
+,p_plug_display_point=>'BODY'
+,p_plug_item_display_point=>'BELOW'
+,p_plug_source=>wwv_flow_utilities.join(wwv_flow_t_varchar2(
+'<p>',
+'   clipboard gives you full access to the system clipboard. You can read from the clipboard and also write to it.',
+'</p>',
+'<p>',
+'  Please read the documentation for details and explanation.',
+'</p>'))
+,p_plug_query_row_template=>1
+,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
+,p_attribute_01=>'N'
+,p_attribute_02=>'HTML'
+);
+wwv_flow_api.create_page_item(
+ p_id=>wwv_flow_api.id(19371679212485928)
+,p_name=>'P8_DIRECTORY'
+,p_item_sequence=>10
+,p_item_plug_id=>wwv_flow_api.id(19371209060485920)
+,p_prompt=>'fs.readDirSync()'
+,p_post_element_text=>'(Directory will be read on change)'
+,p_display_as=>'NATIVE_TEXT_FIELD'
+,p_cSize=>60
+,p_field_template=>wwv_flow_api.id(18847639845226149)
+,p_item_template_options=>'#DEFAULT#'
+,p_attribute_01=>'N'
+,p_attribute_02=>'N'
+,p_attribute_04=>'TEXT'
+,p_attribute_05=>'BOTH'
+);
+wwv_flow_api.create_page_item(
+ p_id=>wwv_flow_api.id(19372069298485932)
+,p_name=>'P8_DIR_OUTPUT'
+,p_item_sequence=>20
+,p_item_plug_id=>wwv_flow_api.id(19371209060485920)
+,p_prompt=>'Directory contents'
+,p_display_as=>'NATIVE_TEXTAREA'
+,p_cSize=>60
+,p_cHeight=>8
+,p_field_template=>wwv_flow_api.id(18847639845226149)
+,p_item_template_options=>'#DEFAULT#'
+,p_attribute_01=>'Y'
+,p_attribute_02=>'N'
+,p_attribute_03=>'N'
+,p_attribute_04=>'BOTH'
+);
+wwv_flow_api.create_page_da_event(
+ p_id=>wwv_flow_api.id(19250953554957209)
+,p_name=>'readDirSync'
+,p_event_sequence=>10
+,p_triggering_element_type=>'ITEM'
+,p_triggering_element=>'P8_DIRECTORY'
+,p_bind_type=>'bind'
+,p_bind_event_type=>'change'
+);
+wwv_flow_api.create_page_da_action(
+ p_id=>wwv_flow_api.id(19251087599957210)
+,p_event_id=>wwv_flow_api.id(19250953554957209)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>'$s(''P8_DIR_OUTPUT'',apexce.fs.readDirSync($v(''P8_DIRECTORY'')).join("\n"));'
+);
+wwv_flow_api.create_page_da_event(
+ p_id=>wwv_flow_api.id(19372839001485953)
+,p_name=>'change'
+,p_event_sequence=>10
+,p_triggering_element_type=>'ITEM'
+,p_triggering_element=>'P8_WRITE'
+,p_bind_type=>'bind'
+,p_bind_event_type=>'change'
+);
+wwv_flow_api.create_page_da_action(
+ p_id=>wwv_flow_api.id(19373348977485955)
+,p_event_id=>wwv_flow_api.id(19372839001485953)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>'apexce.clipboard.writeText($v(''P8_WRITE''));'
+,p_stop_execution_on_error=>'Y'
 );
 end;
 /

@@ -16,11 +16,16 @@ const config = require('../common/config.js');
 const { app, BrowserWindow, ipcMain } = require('electron');
 const { exec } = require('child_process');
 
+if (config.exposeFs()) var fs = require('fs');
+
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 const mainIdx   = 0;
 var   windowMgr = [];
+
+// initialize application menu
+require('./application-menu.js');
 
 
 // Quit when all windows are closed.
@@ -45,9 +50,6 @@ app.on('ready', function() {
     "useContentSize": true
   });
 
-  // remove the menue (for windows and linux)
-  windowMgr[mainIdx].setMenu(null);
-
   // and load the index.html of the app.
   windowMgr[mainIdx].loadURL('file://' + __dirname + '/../foreground/index.html');
 
@@ -69,6 +71,8 @@ app.on('ready', function() {
 });
 
 
+
+// -----------------------------------------------------------------------------
 var gCommandId = 0;
 
 // listening for a command from renderer/webview
@@ -161,4 +165,29 @@ ipcMain.on('windowMgr$s', function(event,pWindowMgrId,pNd,pValue,pDisplayValue,p
   // caller is waiting for just any answer
   event.returnValue = '';
 });
+
+
+// -----------------------------------------------------------------------------
+//   File System Functions
+//   ----------------------
+//
+//   Implements various fs methods to browse directories and read/write files.
+// -----------------------------------------------------------------------------
+
+// listening for a command from renderer/webview
+ipcMain.on('fs.readDirSync', (event, path, options) => {
+  console.log('fs.readDirSync',path,options);
+  if (path) {
+    try {
+      event.returnValue = {"success":true, "data": fs.readdirSync(path,options)};
+    }
+    catch (err) {
+      event.returnValue = {"success":false, "error": err, "message": err.message};
+    }
+
+  } else {
+    event.returnValue = 'empty path received';
+  }
+});
+
 
