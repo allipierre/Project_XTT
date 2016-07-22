@@ -18,7 +18,26 @@ exports.readDirSync = function(path,options) {
   var vResult = ipcRenderer.sendSync('fs.readDirSync', path, options);
 
   if (!vResult.success) {
-    console.log(vResult.message);
+    console.log(vResult);
+    return false;
+  } else {
+    return vResult.data;
+  }
+};
+
+exports.readFileSync = function(file,options) {
+  if (options===undefined) {
+    options = { "encoding" : "utf8" };
+  } else {
+    if (options.encoding===undefined) {
+      options.encoding = "utf8";
+    }
+  }
+
+  var vResult = ipcRenderer.sendSync('fs.readFileSync', file, options);
+
+  if (!vResult.success) {
+    console.log(vResult);
     return false;
   } else {
     return vResult.data;

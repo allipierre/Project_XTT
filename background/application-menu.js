@@ -183,7 +183,6 @@ if (process.platform === 'win32') {
 }
 
 app.on('ready', function () {
-  console.log(template);
   const menu = Menu.buildFromTemplate(template);
   Menu.setApplicationMenu(menu);
 })

@@ -9,3 +9,7 @@
 * read i.e. scanner data when connected to a serial port
 * provide a browser-like start-app (favorites, URL/Search-Field, recent pages)
 * provide Mac+Windows Release with prebuilt binaries (installer for windows)
+
+# Questions
+
+* how should errors be handled when sending from main to webview? Ignore, throw or passback an error object?

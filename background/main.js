@@ -174,19 +174,35 @@ ipcMain.on('windowMgr$s', function(event,pWindowMgrId,pNd,pValue,pDisplayValue,p
 //   Implements various fs methods to browse directories and read/write files.
 // -----------------------------------------------------------------------------
 
-// listening for a command from renderer/webview
+// read a directory
 ipcMain.on('fs.readDirSync', (event, path, options) => {
-  console.log('fs.readDirSync',path,options);
   if (path) {
     try {
       event.returnValue = {"success":true, "data": fs.readdirSync(path,options)};
     }
     catch (err) {
-      event.returnValue = {"success":false, "error": err, "message": err.message};
+      console.log(err);
+      event.returnValue = {"success":false, "error": err, "message": err.message, "name":err.name};
     }
 
   } else {
     event.returnValue = 'empty path received';
+  }
+});
+
+// read a file
+ipcMain.on('fs.readFileSync', (event, file, options) => {
+  if (file) {
+    try {
+      event.returnValue = {"success":true, "data": fs.readFileSync(file, options)};
+    }
+    catch (err) {
+      console.log(err);
+      event.returnValue = {"success":false, "error": err, "message": err.message, "name":err.name};
+    }
+
+  } else {
+    event.returnValue = 'empty filename received';
   }
 });
 

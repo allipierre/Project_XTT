@@ -27,7 +27,7 @@ prompt APPLICATION 722 - APEX Client Extension - TestApp
 -- Application Export:
 --   Application:     722
 --   Name:            APEX Client Extension - TestApp
---   Date and Time:   10:52 Thursday July 21, 2016
+--   Date and Time:   04:31 Friday July 22, 2016
 --   Exported By:     PRAGANITSCH
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -37,11 +37,11 @@ prompt APPLICATION 722 - APEX Client Extension - TestApp
 
 -- Application Statistics:
 --   Pages:                      9
---     Items:                   20
+--     Items:                   22
 --     Processes:                4
 --     Regions:                 11
 --     Buttons:                  9
---     Dynamic Actions:         12
+--     Dynamic Actions:         13
 --   Shared Components:
 --     Logic:
 --     Navigation:
@@ -106,7 +106,7 @@ wwv_flow_api.create_flow(
 ,p_rejoin_existing_sessions=>'N'
 ,p_csv_encoding=>'Y'
 ,p_last_updated_by=>'PRAGANITSCH'
-,p_last_upd_yyyymmddhh24miss=>'20160721105011'
+,p_last_upd_yyyymmddhh24miss=>'20160721161541'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_ui_type_name => null
 );
@@ -8955,7 +8955,7 @@ wwv_flow_api.create_page(
 ,p_cache_mode=>'NOCACHE'
 ,p_help_text=>'No help is available for this page.'
 ,p_last_updated_by=>'PRAGANITSCH'
-,p_last_upd_yyyymmddhh24miss=>'20160721085200'
+,p_last_upd_yyyymmddhh24miss=>'20160721161541'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(19371209060485920)
@@ -8979,6 +8979,38 @@ wwv_flow_api.create_page_plug(
 ,p_attribute_02=>'HTML'
 );
 wwv_flow_api.create_page_item(
+ p_id=>wwv_flow_api.id(19251154833957211)
+,p_name=>'P8_FILE'
+,p_item_sequence=>40
+,p_item_plug_id=>wwv_flow_api.id(19371209060485920)
+,p_prompt=>'fs.readFileSync()'
+,p_post_element_text=>'(Directory will be read on change)'
+,p_display_as=>'NATIVE_TEXT_FIELD'
+,p_cSize=>60
+,p_field_template=>wwv_flow_api.id(18847639845226149)
+,p_item_template_options=>'#DEFAULT#'
+,p_attribute_01=>'N'
+,p_attribute_02=>'N'
+,p_attribute_04=>'TEXT'
+,p_attribute_05=>'BOTH'
+);
+wwv_flow_api.create_page_item(
+ p_id=>wwv_flow_api.id(19251210758957212)
+,p_name=>'P8_FILE_OUTPUT'
+,p_item_sequence=>50
+,p_item_plug_id=>wwv_flow_api.id(19371209060485920)
+,p_prompt=>'Directory contents'
+,p_display_as=>'NATIVE_TEXTAREA'
+,p_cSize=>60
+,p_cHeight=>8
+,p_field_template=>wwv_flow_api.id(18847639845226149)
+,p_item_template_options=>'#DEFAULT#'
+,p_attribute_01=>'Y'
+,p_attribute_02=>'N'
+,p_attribute_03=>'N'
+,p_attribute_04=>'BOTH'
+);
+wwv_flow_api.create_page_item(
  p_id=>wwv_flow_api.id(19371679212485928)
 ,p_name=>'P8_DIRECTORY'
 ,p_item_sequence=>10
@@ -8997,7 +9029,7 @@ wwv_flow_api.create_page_item(
 wwv_flow_api.create_page_item(
  p_id=>wwv_flow_api.id(19372069298485932)
 ,p_name=>'P8_DIR_OUTPUT'
-,p_item_sequence=>20
+,p_item_sequence=>30
 ,p_item_plug_id=>wwv_flow_api.id(19371209060485920)
 ,p_prompt=>'Directory contents'
 ,p_display_as=>'NATIVE_TEXTAREA'
@@ -9046,6 +9078,24 @@ wwv_flow_api.create_page_da_action(
 ,p_action=>'NATIVE_JAVASCRIPT_CODE'
 ,p_attribute_01=>'apexce.clipboard.writeText($v(''P8_WRITE''));'
 ,p_stop_execution_on_error=>'Y'
+);
+wwv_flow_api.create_page_da_event(
+ p_id=>wwv_flow_api.id(19251393915957213)
+,p_name=>'readFileSync'
+,p_event_sequence=>20
+,p_triggering_element_type=>'ITEM'
+,p_triggering_element=>'P8_FILE'
+,p_bind_type=>'bind'
+,p_bind_event_type=>'change'
+);
+wwv_flow_api.create_page_da_action(
+ p_id=>wwv_flow_api.id(19251412651957214)
+,p_event_id=>wwv_flow_api.id(19251393915957213)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'Y'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>'$s(''P8_FILE_OUTPUT'',apexce.fs.readFileSync($v(''P8_FILE'')));'
 );
 end;
 /

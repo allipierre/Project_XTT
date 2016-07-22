@@ -13,6 +13,7 @@ Current available APIs:
 * [shell](http://electron.atom.io/docs/api/shell/)
 * [processInfo](http://electron.atom.io/docs/api/process/)
 * [webFrame](http://electron.atom.io/docs/api/web-frame/)
+* fs
 
 
 # Known Issues
