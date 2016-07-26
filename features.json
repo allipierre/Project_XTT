@@ -4,7 +4,7 @@
 , "urlBlackList"        : []
 
 , "exposeClipboard"     : true
-, "exposeDialog"        : false
+, "exposeDialog"        : true
 , "exposeFs"            : true
 , "exposeGlobalShortcut": false
 , "exposeIpcRenderer"   : true

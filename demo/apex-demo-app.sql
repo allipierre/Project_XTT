@@ -27,8 +27,7 @@ prompt APPLICATION 722 - APEX Client Extension - TestApp
 -- Application Export:
 --   Application:     722
 --   Name:            APEX Client Extension - TestApp
---   Date and Time:   04:31 Friday July 22, 2016
---   Exported By:     PRAGANITSCH
+--   Exported By:     FX_WS_001
 --   Flashback:       0
 --   Export Type:     Application Export
 --   Version:         5.0.4.00.12
@@ -36,12 +35,12 @@ prompt APPLICATION 722 - APEX Client Extension - TestApp
 --
 
 -- Application Statistics:
---   Pages:                      9
---     Items:                   22
+--   Pages:                     10
+--     Items:                   25
 --     Processes:                4
---     Regions:                 11
---     Buttons:                  9
---     Dynamic Actions:         13
+--     Regions:                 12
+--     Buttons:                 12
+--     Dynamic Actions:         19
 --   Shared Components:
 --     Logic:
 --     Navigation:
@@ -64,7 +63,7 @@ prompt APPLICATION 722 - APEX Client Extension - TestApp
 --         Report:               9
 --     Globalization:
 --     Reports:
---   Supporting Objects:  Included
+--   Supporting Objects:  Excluded
 
 prompt --application/delete_application
 begin
@@ -106,7 +105,7 @@ wwv_flow_api.create_flow(
 ,p_rejoin_existing_sessions=>'N'
 ,p_csv_encoding=>'Y'
 ,p_last_updated_by=>'PRAGANITSCH'
-,p_last_upd_yyyymmddhh24miss=>'20160721161541'
+,p_last_upd_yyyymmddhh24miss=>'20160726025821'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_ui_type_name => null
 );
@@ -174,6 +173,14 @@ wwv_flow_api.create_list_item(
 ,p_list_item_link_target=>'f?p=&APP_ID.:8:&SESSION.::&DEBUG.'
 ,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
 ,p_list_item_current_for_pages=>'8'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(19431022683538395)
+,p_list_item_display_sequence=>80
+,p_list_item_link_text=>'dialog'
+,p_list_item_link_target=>'f?p=&APP_ID.:9:&SESSION.::&DEBUG.'
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'9'
 );
 wwv_flow_api.create_list(
  p_id=>wwv_flow_api.id(18853220404226176)
@@ -262,11 +269,6 @@ null;
 end;
 /
 prompt --application/pages/page_groups
-begin
-null;
-end;
-/
-prompt --application/comments
 begin
 null;
 end;
@@ -7790,11 +7792,6 @@ begin
 null;
 end;
 /
-prompt --application/shared_components/globalization/translations
-begin
-null;
-end;
-/
 prompt --application/shared_components/globalization/messages
 begin
 null;
@@ -8955,7 +8952,7 @@ wwv_flow_api.create_page(
 ,p_cache_mode=>'NOCACHE'
 ,p_help_text=>'No help is available for this page.'
 ,p_last_updated_by=>'PRAGANITSCH'
-,p_last_upd_yyyymmddhh24miss=>'20160721161541'
+,p_last_upd_yyyymmddhh24miss=>'20160722044306'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(19371209060485920)
@@ -8968,7 +8965,7 @@ wwv_flow_api.create_page_plug(
 ,p_plug_item_display_point=>'BELOW'
 ,p_plug_source=>wwv_flow_utilities.join(wwv_flow_t_varchar2(
 '<p>',
-'   clipboard gives you full access to the system clipboard. You can read from the clipboard and also write to it.',
+'   fs lets you use the client file system. It provides various methods to browse directories, read/write files and more.',
 '</p>',
 '<p>',
 '  Please read the documentation for details and explanation.',
@@ -9093,9 +9090,249 @@ wwv_flow_api.create_page_da_action(
 ,p_event_id=>wwv_flow_api.id(19251393915957213)
 ,p_event_result=>'TRUE'
 ,p_action_sequence=>10
-,p_execute_on_page_init=>'Y'
+,p_execute_on_page_init=>'N'
 ,p_action=>'NATIVE_JAVASCRIPT_CODE'
 ,p_attribute_01=>'$s(''P8_FILE_OUTPUT'',apexce.fs.readFileSync($v(''P8_FILE'')));'
+);
+end;
+/
+prompt --application/pages/page_00009
+begin
+wwv_flow_api.create_page(
+ p_id=>9
+,p_user_interface_id=>wwv_flow_api.id(18853348771226178)
+,p_name=>'dialog'
+,p_page_mode=>'NORMAL'
+,p_step_title=>'apexce.dialog'
+,p_step_sub_title=>'dialog'
+,p_step_sub_title_type=>'TEXT_WITH_SUBSTITUTIONS'
+,p_first_item=>'NO_FIRST_ITEM'
+,p_page_template_options=>'#DEFAULT#'
+,p_overwrite_navigation_list=>'N'
+,p_page_is_public_y_n=>'N'
+,p_cache_mode=>'NOCACHE'
+,p_help_text=>'No help is available for this page.'
+,p_last_updated_by=>'PRAGANITSCH'
+,p_last_upd_yyyymmddhh24miss=>'20160726025821'
+);
+wwv_flow_api.create_page_plug(
+ p_id=>wwv_flow_api.id(19431442000538400)
+,p_plug_name=>'apexce.dialog'
+,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
+,p_plug_template=>wwv_flow_api.id(18827176422226126)
+,p_plug_display_sequence=>10
+,p_include_in_reg_disp_sel_yn=>'Y'
+,p_plug_display_point=>'BODY'
+,p_plug_item_display_point=>'BELOW'
+,p_plug_source=>wwv_flow_utilities.join(wwv_flow_t_varchar2(
+'<p>',
+'   Display native system dialogs for opening and saving files, alerting, etc.',
+'</p>',
+'<p>',
+'  Please read the documentation for details and explanation.',
+'</p>'))
+,p_plug_query_row_template=>1
+,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
+,p_attribute_01=>'N'
+,p_attribute_02=>'HTML'
+);
+wwv_flow_api.create_page_button(
+ p_id=>wwv_flow_api.id(19251589616957215)
+,p_button_sequence=>10
+,p_button_plug_id=>wwv_flow_api.id(19431442000538400)
+,p_button_name=>'OpenDirectory'
+,p_button_action=>'DEFINED_BY_DA'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>wwv_flow_api.id(18848142176226151)
+,p_button_image_alt=>'Opendirectory'
+,p_button_position=>'BODY'
+,p_grid_new_row=>'Y'
+,p_grid_column=>4
+);
+wwv_flow_api.create_page_button(
+ p_id=>wwv_flow_api.id(19251822723957218)
+,p_button_sequence=>40
+,p_button_plug_id=>wwv_flow_api.id(19431442000538400)
+,p_button_name=>'OpenFile'
+,p_button_action=>'DEFINED_BY_DA'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>wwv_flow_api.id(18848142176226151)
+,p_button_image_alt=>'Open File'
+,p_button_position=>'BODY'
+,p_grid_new_row=>'Y'
+,p_grid_column=>4
+);
+wwv_flow_api.create_page_button(
+ p_id=>wwv_flow_api.id(19252171139957221)
+,p_button_sequence=>80
+,p_button_plug_id=>wwv_flow_api.id(19431442000538400)
+,p_button_name=>'showMessage'
+,p_button_action=>'DEFINED_BY_DA'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>wwv_flow_api.id(18848142176226151)
+,p_button_image_alt=>'Show Message'
+,p_button_position=>'BODY'
+,p_grid_new_row=>'Y'
+,p_grid_column=>4
+);
+wwv_flow_api.create_page_item(
+ p_id=>wwv_flow_api.id(19252413985957224)
+,p_name=>'P9_MESSAGE_OUTPUT'
+,p_item_sequence=>90
+,p_item_plug_id=>wwv_flow_api.id(19431442000538400)
+,p_prompt=>'apexce.dialog.showMessageBox'
+,p_display_as=>'NATIVE_TEXTAREA'
+,p_cSize=>60
+,p_cHeight=>2
+,p_field_template=>wwv_flow_api.id(18847639845226149)
+,p_item_template_options=>'#DEFAULT#'
+,p_attribute_01=>'Y'
+,p_attribute_02=>'N'
+,p_attribute_03=>'N'
+,p_attribute_04=>'BOTH'
+);
+wwv_flow_api.create_page_item(
+ p_id=>wwv_flow_api.id(19432228725538412)
+,p_name=>'P9_FILE_OUTPUT'
+,p_item_sequence=>60
+,p_item_plug_id=>wwv_flow_api.id(19431442000538400)
+,p_prompt=>'apexce.dialog.showOpenDialog File'
+,p_display_as=>'NATIVE_TEXTAREA'
+,p_cSize=>60
+,p_cHeight=>2
+,p_field_template=>wwv_flow_api.id(18847639845226149)
+,p_item_template_options=>'#DEFAULT#'
+,p_attribute_01=>'Y'
+,p_attribute_02=>'N'
+,p_attribute_03=>'N'
+,p_attribute_04=>'BOTH'
+);
+wwv_flow_api.create_page_item(
+ p_id=>wwv_flow_api.id(19433036920538413)
+,p_name=>'P9_DIR_OUTPUT'
+,p_item_sequence=>30
+,p_item_plug_id=>wwv_flow_api.id(19431442000538400)
+,p_prompt=>'apexce.dialog.showOpenDialog Directory'
+,p_display_as=>'NATIVE_TEXTAREA'
+,p_cSize=>60
+,p_cHeight=>2
+,p_field_template=>wwv_flow_api.id(18847639845226149)
+,p_item_template_options=>'#DEFAULT#'
+,p_attribute_01=>'Y'
+,p_attribute_02=>'N'
+,p_attribute_03=>'N'
+,p_attribute_04=>'BOTH'
+);
+wwv_flow_api.create_page_da_event(
+ p_id=>wwv_flow_api.id(19433472255538430)
+,p_name=>'change'
+,p_event_sequence=>10
+,p_triggering_element_type=>'ITEM'
+,p_triggering_element=>'P9_WRITE'
+,p_bind_type=>'bind'
+,p_bind_event_type=>'change'
+);
+wwv_flow_api.create_page_da_action(
+ p_id=>wwv_flow_api.id(19433953526538431)
+,p_event_id=>wwv_flow_api.id(19433472255538430)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>'apexce.clipboard.writeText($v(''P9_WRITE''));'
+,p_stop_execution_on_error=>'Y'
+);
+wwv_flow_api.create_page_da_event(
+ p_id=>wwv_flow_api.id(19434352006538432)
+,p_name=>'readDirSync'
+,p_event_sequence=>10
+,p_triggering_element_type=>'ITEM'
+,p_triggering_element=>'P9_DIRECTORY'
+,p_bind_type=>'bind'
+,p_bind_event_type=>'change'
+);
+wwv_flow_api.create_page_da_action(
+ p_id=>wwv_flow_api.id(19434872239538432)
+,p_event_id=>wwv_flow_api.id(19434352006538432)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>'$s(''P9_DIR_OUTPUT'',apexce.fs.readDirSync($v(''P9_DIRECTORY'')).join("\n"));'
+,p_stop_execution_on_error=>'Y'
+);
+wwv_flow_api.create_page_da_event(
+ p_id=>wwv_flow_api.id(19251647543957216)
+,p_name=>'openDir'
+,p_event_sequence=>20
+,p_triggering_element_type=>'BUTTON'
+,p_triggering_button_id=>wwv_flow_api.id(19251589616957215)
+,p_bind_type=>'bind'
+,p_bind_event_type=>'click'
+);
+wwv_flow_api.create_page_da_action(
+ p_id=>wwv_flow_api.id(19251702957957217)
+,p_event_id=>wwv_flow_api.id(19251647543957216)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>'$s("P9_DIR_OUTPUT",apexce.dialog.showOpenDialog({"properties":["openDirectory"]}));'
+);
+wwv_flow_api.create_page_da_event(
+ p_id=>wwv_flow_api.id(19435215128538433)
+,p_name=>'readFileSync'
+,p_event_sequence=>20
+,p_triggering_element_type=>'ITEM'
+,p_triggering_element=>'P9_FILE'
+,p_bind_type=>'bind'
+,p_bind_event_type=>'change'
+);
+wwv_flow_api.create_page_da_action(
+ p_id=>wwv_flow_api.id(19435784549538433)
+,p_event_id=>wwv_flow_api.id(19435215128538433)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>'$s(''P9_FILE_OUTPUT'',apexce.fs.readFileSync($v(''P9_FILE'')));'
+,p_stop_execution_on_error=>'Y'
+);
+wwv_flow_api.create_page_da_event(
+ p_id=>wwv_flow_api.id(19251938174957219)
+,p_name=>'openFile'
+,p_event_sequence=>30
+,p_triggering_element_type=>'BUTTON'
+,p_triggering_button_id=>wwv_flow_api.id(19251822723957218)
+,p_bind_type=>'bind'
+,p_bind_event_type=>'click'
+);
+wwv_flow_api.create_page_da_action(
+ p_id=>wwv_flow_api.id(19252070185957220)
+,p_event_id=>wwv_flow_api.id(19251938174957219)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>'$s("P9_FILE_OUTPUT",apexce.dialog.showOpenDialog({"properties":["openFile"]}));'
+);
+wwv_flow_api.create_page_da_event(
+ p_id=>wwv_flow_api.id(19252293356957222)
+,p_name=>'showMessage'
+,p_event_sequence=>40
+,p_triggering_element_type=>'BUTTON'
+,p_triggering_button_id=>wwv_flow_api.id(19252171139957221)
+,p_bind_type=>'bind'
+,p_bind_event_type=>'click'
+);
+wwv_flow_api.create_page_da_action(
+ p_id=>wwv_flow_api.id(19252312892957223)
+,p_event_id=>wwv_flow_api.id(19252293356957222)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>'$s(''P9_MESSAGE_OUTPUT'',apexce.dialog.showMessageBox({"type":"info","title":"This is amazing!","message":"Oh wow! My APEX App uses native OS Dialogs","buttons":["Yes","Oh yeah"]}));'
 );
 end;
 /
@@ -9221,26 +9458,6 @@ wwv_flow_api.create_page_process(
 ,p_process_name=>'Get Username Cookie'
 ,p_process_sql_clob=>':P101_USERNAME := apex_authentication.get_login_username_cookie;'
 );
-end;
-/
-prompt --application/deployment/definition
-begin
-null;
-end;
-/
-prompt --application/deployment/install
-begin
-null;
-end;
-/
-prompt --application/deployment/checks
-begin
-null;
-end;
-/
-prompt --application/deployment/buildoptions
-begin
-null;
 end;
 /
 prompt --application/end_environment
