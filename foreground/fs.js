@@ -6,7 +6,7 @@
  * read and write files, and so on.
  * Loaded by preload.js.
  *
- * @summary   webFrame methods.
+ * @summary   fs methods.
  *
  * @namespace apexce.fs
  *

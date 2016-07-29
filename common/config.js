@@ -52,6 +52,10 @@ exports.exposeNativeImage = function () {
   return configJson.exposeNativeImage;
 }
 
+exports.exposePrint = function () {
+  return configJson.exposePrint;
+}
+
 exports.exposeProcessInfo = function () {
   return configJson.exposeProcessInfo;
 }

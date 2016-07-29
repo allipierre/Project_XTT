@@ -19,6 +19,7 @@ Here are all the options with their default value
 	, "exposeIpcRenderer"   : false
 	, "exposeMenu"          : false
 	, "exposeNativeImage"   : false
+	, "exposePrint"         : false
 	, "exposeProcessInfo"   : false
 	, "exposeShell"         : false
 	, "exposeWebFrame"      : false
@@ -57,6 +58,9 @@ Provide API to create Window-Menu and/or Context Menues.
 ###exposeNativeImage
 Manipulate Images.
 
+###exposePrint
+A small collection of print related methods.
+
 ###exposeProcessInfo
 Get access to process information, memory consumption.
 
@@ -70,7 +74,7 @@ API to change Browser Zoom, Font Size and such.
 Should a user be able to open Developer Tools (e.g. through API or keyboard shortcut)?
 
 ###openDevToolsRenderer
-Opens the browsers developer tools for the **Renderer** when opening a Window. This is meant for development only.
+Opens the browsers developer tools for the **Renderer** when opening a Window. This is meant for **development only**.
 
 ###openDevToolsWebview
-Opens the browsers developer tools for the **Webview** when opening a Window. This is meant for development only.
+Opens the browsers developer tools for the **Webview** when opening a Window. This is meant for **development only**.

@@ -35,12 +35,12 @@ prompt APPLICATION 722 - APEX Client Extension - TestApp
 --
 
 -- Application Statistics:
---   Pages:                     10
---     Items:                   25
+--   Pages:                     11
+--     Items:                   27
 --     Processes:                4
---     Regions:                 12
---     Buttons:                 12
---     Dynamic Actions:         19
+--     Regions:                 13
+--     Buttons:                 15
+--     Dynamic Actions:         25
 --   Shared Components:
 --     Logic:
 --     Navigation:
@@ -105,7 +105,7 @@ wwv_flow_api.create_flow(
 ,p_rejoin_existing_sessions=>'N'
 ,p_csv_encoding=>'Y'
 ,p_last_updated_by=>'PRAGANITSCH'
-,p_last_upd_yyyymmddhh24miss=>'20160726025821'
+,p_last_upd_yyyymmddhh24miss=>'20160729091535'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_ui_type_name => null
 );
@@ -181,6 +181,14 @@ wwv_flow_api.create_list_item(
 ,p_list_item_link_target=>'f?p=&APP_ID.:9:&SESSION.::&DEBUG.'
 ,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
 ,p_list_item_current_for_pages=>'9'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(19711143727664001)
+,p_list_item_display_sequence=>90
+,p_list_item_link_text=>'print'
+,p_list_item_link_target=>'f?p=&APP_ID.:10:&SESSION.::&DEBUG.'
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'10'
 );
 wwv_flow_api.create_list(
  p_id=>wwv_flow_api.id(18853220404226176)
@@ -7883,7 +7891,7 @@ wwv_flow_api.create_page(
 ,p_cache_mode=>'NOCACHE'
 ,p_help_text=>'No help is available for this page.'
 ,p_last_updated_by=>'PRAGANITSCH'
-,p_last_upd_yyyymmddhh24miss=>'20160721105011'
+,p_last_upd_yyyymmddhh24miss=>'20160729091535'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(18532957214763812)
@@ -7896,7 +7904,7 @@ wwv_flow_api.create_page_plug(
 ,p_plug_source=>wwv_flow_utilities.join(wwv_flow_t_varchar2(
 '<p>',
 'Have you ever tried to access the client file system in an APEX Application?<br>',
-'Now this is possible with the <a href="https://github.com/FOEXgmbh/apex-client-extension" target="_blank">APEX Client Extension</a>, powered by <a href="http://electron.atom.io" target="_blank">Electron</a>.',
+'Now this is possible with the <a href="https://github.com/FOEXgmbh/apex-client-extension" target="_blank" rel="external">APEX Client Extension</a>, powered by <a href="http://electron.atom.io" target="_blank">Electron</a>.',
 '</p>',
 '<p>',
 'Simply by running your APEX Application inside this browser, you''ll get access to new Javascript Objects which allow you to run commands on the client system.',
@@ -8365,7 +8373,7 @@ wwv_flow_api.create_page(
 ,p_cache_mode=>'NOCACHE'
 ,p_help_text=>'No help is available for this page.'
 ,p_last_updated_by=>'PRAGANITSCH'
-,p_last_upd_yyyymmddhh24miss=>'20160720174926'
+,p_last_upd_yyyymmddhh24miss=>'20160729091456'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(16487231415341239)
@@ -8381,7 +8389,7 @@ wwv_flow_api.create_page_plug(
 '   Below you can find some of the information you are able to obtain by using apexce.processInfo methods.',
 '</p>',
 '<p>',
-'  Please read the documentation for details and explanation.',
+'  Please read the <a href="https://github.com/FOEXgmbh/apex-client-extension/blob/master/doc/doc.md" target="_blank" rel="external">documentation</a> for details and explanation.',
 '</p>'))
 ,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
 ,p_attribute_01=>'N'
@@ -8476,7 +8484,7 @@ wwv_flow_api.create_page(
 ,p_cache_mode=>'NOCACHE'
 ,p_help_text=>'No help is available for this page.'
 ,p_last_updated_by=>'PRAGANITSCH'
-,p_last_upd_yyyymmddhh24miss=>'20160720174940'
+,p_last_upd_yyyymmddhh24miss=>'20160729091445'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(19214816350783192)
@@ -8492,7 +8500,7 @@ wwv_flow_api.create_page_plug(
 '   clipboard gives you full access to the system clipboard. You can read from the clipboard and also write to it.',
 '</p>',
 '<p>',
-'  Please read the documentation for details and explanation.',
+'  Please read the <a href="https://github.com/FOEXgmbh/apex-client-extension/blob/master/doc/doc.md" target="_blank" rel="external">documentation</a> for details and explanation.',
 '</p>'))
 ,p_plug_query_row_template=>1
 ,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
@@ -8591,7 +8599,7 @@ wwv_flow_api.create_page(
 ,p_cache_mode=>'NOCACHE'
 ,p_help_text=>'No help is available for this page.'
 ,p_last_updated_by=>'PRAGANITSCH'
-,p_last_upd_yyyymmddhh24miss=>'20160721084543'
+,p_last_upd_yyyymmddhh24miss=>'20160729091436'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(19241074905925745)
@@ -8607,7 +8615,7 @@ wwv_flow_api.create_page_plug(
 '   shell provides some utility functions, like opening folders or files in their default app.',
 '</p>',
 '<p>',
-'  Please read the documentation for details and explanation.',
+'  Please read the <a href="https://github.com/FOEXgmbh/apex-client-extension/blob/master/doc/doc.md" target="_blank" rel="external">documentation</a> for details and explanation.',
 '</p>'))
 ,p_plug_query_row_template=>1
 ,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
@@ -8779,7 +8787,7 @@ wwv_flow_api.create_page(
 ,p_cache_mode=>'NOCACHE'
 ,p_help_text=>'No help is available for this page.'
 ,p_last_updated_by=>'PRAGANITSCH'
-,p_last_upd_yyyymmddhh24miss=>'20160721084649'
+,p_last_upd_yyyymmddhh24miss=>'20160729091424'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(19331164478448228)
@@ -8795,7 +8803,7 @@ wwv_flow_api.create_page_plug(
 '   webFrame provides some functions to get/set the browser zoom and usage.',
 '</p>',
 '<p>',
-'  Please read the documentation for details and explanation.',
+'  Please read the <a href="https://github.com/FOEXgmbh/apex-client-extension/blob/master/doc/doc.md" target="_blank" rel="external">documentation</a> for details and explanation.',
 '</p>'))
 ,p_plug_query_row_template=>1
 ,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
@@ -8952,7 +8960,7 @@ wwv_flow_api.create_page(
 ,p_cache_mode=>'NOCACHE'
 ,p_help_text=>'No help is available for this page.'
 ,p_last_updated_by=>'PRAGANITSCH'
-,p_last_upd_yyyymmddhh24miss=>'20160722044306'
+,p_last_upd_yyyymmddhh24miss=>'20160729091414'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(19371209060485920)
@@ -8968,7 +8976,7 @@ wwv_flow_api.create_page_plug(
 '   fs lets you use the client file system. It provides various methods to browse directories, read/write files and more.',
 '</p>',
 '<p>',
-'  Please read the documentation for details and explanation.',
+'  Please read the <a href="https://github.com/FOEXgmbh/apex-client-extension/blob/master/doc/doc.md" target="_blank" rel="external">documentation</a> for details and explanation.',
 '</p>'))
 ,p_plug_query_row_template=>1
 ,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
@@ -9113,7 +9121,7 @@ wwv_flow_api.create_page(
 ,p_cache_mode=>'NOCACHE'
 ,p_help_text=>'No help is available for this page.'
 ,p_last_updated_by=>'PRAGANITSCH'
-,p_last_upd_yyyymmddhh24miss=>'20160726025821'
+,p_last_upd_yyyymmddhh24miss=>'20160729091405'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(19431442000538400)
@@ -9129,7 +9137,7 @@ wwv_flow_api.create_page_plug(
 '   Display native system dialogs for opening and saving files, alerting, etc.',
 '</p>',
 '<p>',
-'  Please read the documentation for details and explanation.',
+'  Please read the <a href="https://github.com/FOEXgmbh/apex-client-extension/blob/master/doc/doc.md" target="_blank" rel="external">documentation</a> for details and explanation.',
 '</p>'))
 ,p_plug_query_row_template=>1
 ,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
@@ -9333,6 +9341,231 @@ wwv_flow_api.create_page_da_action(
 ,p_execute_on_page_init=>'N'
 ,p_action=>'NATIVE_JAVASCRIPT_CODE'
 ,p_attribute_01=>'$s(''P9_MESSAGE_OUTPUT'',apexce.dialog.showMessageBox({"type":"info","title":"This is amazing!","message":"Oh wow! My APEX App uses native OS Dialogs","buttons":["Yes","Oh yeah"]}));'
+);
+end;
+/
+prompt --application/pages/page_00010
+begin
+wwv_flow_api.create_page(
+ p_id=>10
+,p_user_interface_id=>wwv_flow_api.id(18853348771226178)
+,p_name=>'print'
+,p_page_mode=>'NORMAL'
+,p_step_title=>'apexce.print'
+,p_step_sub_title=>'print'
+,p_step_sub_title_type=>'TEXT_WITH_SUBSTITUTIONS'
+,p_first_item=>'NO_FIRST_ITEM'
+,p_page_template_options=>'#DEFAULT#'
+,p_overwrite_navigation_list=>'N'
+,p_page_is_public_y_n=>'N'
+,p_cache_mode=>'NOCACHE'
+,p_help_text=>'No help is available for this page.'
+,p_last_updated_by=>'PRAGANITSCH'
+,p_last_upd_yyyymmddhh24miss=>'20160729091324'
+);
+wwv_flow_api.create_page_plug(
+ p_id=>wwv_flow_api.id(19711553827664006)
+,p_plug_name=>'apexce.print'
+,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
+,p_plug_template=>wwv_flow_api.id(18827176422226126)
+,p_plug_display_sequence=>10
+,p_include_in_reg_disp_sel_yn=>'Y'
+,p_plug_display_point=>'BODY'
+,p_plug_item_display_point=>'BELOW'
+,p_plug_source=>wwv_flow_utilities.join(wwv_flow_t_varchar2(
+'<p>',
+'   The print object contains several printing methods.',
+'</p>',
+'<p>',
+'  Please read the <a href="https://github.com/FOEXgmbh/apex-client-extension/blob/master/doc/doc.md" target="_blank" rel="external">documentation</a> for details and explanation.',
+'</p>'))
+,p_plug_query_row_template=>1
+,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
+,p_attribute_01=>'N'
+,p_attribute_02=>'HTML'
+);
+wwv_flow_api.create_page_button(
+ p_id=>wwv_flow_api.id(19712314858664014)
+,p_button_sequence=>10
+,p_button_plug_id=>wwv_flow_api.id(19711553827664006)
+,p_button_name=>'printPage'
+,p_button_action=>'DEFINED_BY_DA'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>wwv_flow_api.id(18848142176226151)
+,p_button_image_alt=>'apexce.print.printPage()'
+,p_button_position=>'BODY'
+,p_grid_new_row=>'Y'
+,p_grid_column=>4
+);
+wwv_flow_api.create_page_button(
+ p_id=>wwv_flow_api.id(19712790103664015)
+,p_button_sequence=>40
+,p_button_plug_id=>wwv_flow_api.id(19711553827664006)
+,p_button_name=>'PDF'
+,p_button_action=>'DEFINED_BY_DA'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>wwv_flow_api.id(18848142176226151)
+,p_button_image_alt=>'apexce.print.printToPDF()'
+,p_button_position=>'BODY'
+,p_grid_new_row=>'Y'
+,p_grid_column=>4
+);
+wwv_flow_api.create_page_button(
+ p_id=>wwv_flow_api.id(19711956405664013)
+,p_button_sequence=>60
+,p_button_plug_id=>wwv_flow_api.id(19711553827664006)
+,p_button_name=>'showPDF'
+,p_button_action=>'DEFINED_BY_DA'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>wwv_flow_api.id(18848142176226151)
+,p_button_image_alt=>'Show PDF'
+,p_button_position=>'BODY'
+,p_grid_new_row=>'Y'
+,p_grid_column=>4
+);
+wwv_flow_api.create_page_item(
+ p_id=>wwv_flow_api.id(18534636323763829)
+,p_name=>'P10_SILENT'
+,p_item_sequence=>20
+,p_item_plug_id=>wwv_flow_api.id(19711553827664006)
+,p_prompt=>'Silent'
+,p_display_as=>'NATIVE_YES_NO'
+,p_begin_on_new_line=>'N'
+,p_grid_column=>5
+,p_field_template=>wwv_flow_api.id(18847639845226149)
+,p_item_template_options=>'#DEFAULT#'
+,p_attribute_01=>'CUSTOM'
+,p_attribute_02=>'true'
+,p_attribute_03=>'Yes'
+,p_attribute_04=>'false'
+,p_attribute_05=>'No'
+);
+wwv_flow_api.create_page_item(
+ p_id=>wwv_flow_api.id(19713516208664020)
+,p_name=>'P10_PDF_FILE'
+,p_item_sequence=>50
+,p_item_plug_id=>wwv_flow_api.id(19711553827664006)
+,p_prompt=>'Keep blank to create new file'
+,p_display_as=>'NATIVE_TEXTAREA'
+,p_cSize=>60
+,p_cHeight=>2
+,p_field_template=>wwv_flow_api.id(18847639845226149)
+,p_item_template_options=>'#DEFAULT#'
+,p_attribute_01=>'Y'
+,p_attribute_02=>'N'
+,p_attribute_03=>'N'
+,p_attribute_04=>'BOTH'
+);
+wwv_flow_api.create_page_da_event(
+ p_id=>wwv_flow_api.id(19714359621664040)
+,p_name=>'change'
+,p_event_sequence=>10
+,p_triggering_element_type=>'ITEM'
+,p_triggering_element=>'P10_WRITE'
+,p_bind_type=>'bind'
+,p_bind_event_type=>'change'
+);
+wwv_flow_api.create_page_da_action(
+ p_id=>wwv_flow_api.id(19714864249664042)
+,p_event_id=>wwv_flow_api.id(19714359621664040)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>'apexce.clipboard.writeText($v(''P10_WRITE''));'
+,p_stop_execution_on_error=>'Y'
+);
+wwv_flow_api.create_page_da_event(
+ p_id=>wwv_flow_api.id(19715272125664043)
+,p_name=>'readDirSync'
+,p_event_sequence=>10
+,p_triggering_element_type=>'ITEM'
+,p_triggering_element=>'P10_DIRECTORY'
+,p_bind_type=>'bind'
+,p_bind_event_type=>'change'
+);
+wwv_flow_api.create_page_da_action(
+ p_id=>wwv_flow_api.id(19715752590664043)
+,p_event_id=>wwv_flow_api.id(19715272125664043)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>'$s(''P10_DIR_OUTPUT'',apexce.fs.readDirSync($v(''P10_DIRECTORY'')).join("\n"));'
+,p_stop_execution_on_error=>'Y'
+);
+wwv_flow_api.create_page_da_event(
+ p_id=>wwv_flow_api.id(19716113998664044)
+,p_name=>'readFileSync'
+,p_event_sequence=>20
+,p_triggering_element_type=>'ITEM'
+,p_triggering_element=>'P10_FILE'
+,p_bind_type=>'bind'
+,p_bind_event_type=>'change'
+);
+wwv_flow_api.create_page_da_action(
+ p_id=>wwv_flow_api.id(19716698720664044)
+,p_event_id=>wwv_flow_api.id(19716113998664044)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>'$s(''P10_FILE_OUTPUT'',apexce.fs.readFileSync($v(''P10_FILE'')));'
+,p_stop_execution_on_error=>'Y'
+);
+wwv_flow_api.create_page_da_event(
+ p_id=>wwv_flow_api.id(19717008046664044)
+,p_name=>'printPage'
+,p_event_sequence=>20
+,p_triggering_element_type=>'BUTTON'
+,p_triggering_button_id=>wwv_flow_api.id(19712314858664014)
+,p_bind_type=>'bind'
+,p_bind_event_type=>'click'
+);
+wwv_flow_api.create_page_da_action(
+ p_id=>wwv_flow_api.id(19717582432664045)
+,p_event_id=>wwv_flow_api.id(19717008046664044)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>'apexce.print.printPage({"silent":($v("P10_SILENT")==="true")})'
+);
+wwv_flow_api.create_page_da_event(
+ p_id=>wwv_flow_api.id(19717918373664045)
+,p_name=>'printToPDF'
+,p_event_sequence=>30
+,p_triggering_element_type=>'BUTTON'
+,p_triggering_button_id=>wwv_flow_api.id(19712790103664015)
+,p_bind_type=>'bind'
+,p_bind_event_type=>'click'
+);
+wwv_flow_api.create_page_da_action(
+ p_id=>wwv_flow_api.id(19718496112664045)
+,p_event_id=>wwv_flow_api.id(19717918373664045)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>'$s("P10_PDF_FILE",apexce.print.printToPDF({},$v("P10_PDF_FILE")));'
+);
+wwv_flow_api.create_page_da_event(
+ p_id=>wwv_flow_api.id(19718865911664045)
+,p_name=>'showPDF'
+,p_event_sequence=>40
+,p_triggering_element_type=>'BUTTON'
+,p_triggering_button_id=>wwv_flow_api.id(19711956405664013)
+,p_bind_type=>'bind'
+,p_bind_event_type=>'click'
+);
+wwv_flow_api.create_page_da_action(
+ p_id=>wwv_flow_api.id(19719355603664046)
+,p_event_id=>wwv_flow_api.id(19718865911664045)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>'apexce.shell.openItem($v("P10_PDF_FILE"));'
 );
 end;
 /

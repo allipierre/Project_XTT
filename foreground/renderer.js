@@ -21,10 +21,12 @@
   var gStillLoading = true;
 
   // communication handles to talk to backend process (main)
-  const {ipcRenderer, remote, webFrame } = require('electron');
+  const { ipcRenderer, remote, webFrame } = require('electron');
+  const { dialog } = remote;
 
   // functional modules, e.g. shell access
-  const {exec} = require('child_process');
+  const { exec } = require('child_process');
+  const fs = require('fs');
 
   // get general settings of this app
   const config = require('../common/config.js');
@@ -57,17 +59,30 @@
   webview.addEventListener('ipc-message', function(event) {
     console.log(event);
 
-    if (event.channel === "runCommand") {
-      if (event.args) {
-        console.log(event.args);
-        exec(event.args,function(error,stdout,stderr) {console.log(stdout);});
-        event.returnValue = "Renderer-OK";
-      } else {
-        event.returnValue = 'Renderer-empty command string received';
-      }
-    } else if (event.channel === "loadURL") {
-      console.log('webview-loadURL',event.args[0]);
+    if (event.channel === "loadURL") {
+
       webview.loadURL(event.args[0]);
+
+    } else if (event.channel === "printPage") {
+
+      webview.print(event.args[0]);
+
+    } else if (event.channel === "printToPDF") {
+
+      // create the PDF
+      webview.printToPDF(event.args[0],function(err,data){
+        if (err) {
+          dialog.showErrorBox('Error at printToPDF', err.message);
+          return;
+        }
+        // write the PDF to disk
+        fs.writeFile(event.args[1], data, function(err){
+          if (err) {
+            dialog.showErrorBox('Error at writeFile', err.message);
+            return;
+          }
+        });
+      });
     }
   });
 

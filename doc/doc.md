@@ -10,10 +10,12 @@ To achieve that we let you access some of the Electron APIs directly, but will w
 Current available APIs:
 
 * [clipboard](http://electron.atom.io/docs/api/clipboard/)
-* [shell](http://electron.atom.io/docs/api/shell/)
-* [processInfo](http://electron.atom.io/docs/api/process/)
-* [webFrame](http://electron.atom.io/docs/api/web-frame/)
+* [dialog](http://electron.atom.io/docs/api/dialog/)
 * fs
+* print
+* [processInfo](http://electron.atom.io/docs/api/process/)
+* [shell](http://electron.atom.io/docs/api/shell/)
+* [webFrame](http://electron.atom.io/docs/api/web-frame/)
 
 
 # Known Issues

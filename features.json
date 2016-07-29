@@ -10,6 +10,7 @@
 , "exposeIpcRenderer"   : true
 , "exposeMenu"          : false
 , "exposeNativeImage"   : false
+, "exposePrint"         : true
 , "exposeProcessInfo"   : true
 , "exposeShell"         : true
 , "exposeWebFrame"      : true

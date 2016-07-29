@@ -187,6 +187,7 @@ if (config.exposeMenu())           window.apexce.Menu           = require('elect
 if (config.exposeMenu())           window.apexce.MenuItem       = require('electron').remote.MenuItem;
 if (config.exposeIpcRenderer())    window.apexce.ipcRenderer    = ipcRenderer;
 if (config.exposeNativeImage())    window.apexce.nativeImage    = require('electron').nativeImage;
+if (config.exposePrint())          window.apexce.print          = require('./print.js');
 if (config.exposeProcessInfo())    window.apexce.processInfo    = require('./processInfo.js');
 if (config.exposeShell())          window.apexce.shell          = require('electron').shell;
 if (config.exposeWebFrame())       window.apexce.webFrame       = require('./webFrame.js');
