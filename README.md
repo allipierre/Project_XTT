@@ -4,7 +4,7 @@
 
 This is a configurable Browser based on the awesome [Electron](http://electron.atom.io). It adds several client-features to your Oracle APEX application.
 
-All you need to change is the [`features.json`](doc/features.md) file, where you define which features should be enabled in your APEX application:
+All you need to change is the [`config.json`](doc/config.md) file, where you define which features should be enabled in your APEX application:
 
 - access to the clipboard
 - definition of global keyboard shortcuts

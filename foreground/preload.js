@@ -12,6 +12,10 @@
  *
  */
 
+ // global base path for preload js
+ const path = require('path');
+ global.__base = path.normalize(__dirname + '/../');
+
 //
 // Main namespace for the APEX Client Extension Browser.
 //
@@ -24,7 +28,7 @@ window.apexce.isActive = function () {
 //
 // load config settings to see which modules should be activated
 //
-const config = require('../common/config.js');
+const config = require(__base + 'common/config.js');
 
 const {ipcRenderer,webFrame} = require('electron');
 
@@ -177,17 +181,17 @@ window.initOpener = function(pWindowMgrId,pParentWindowMgrId) {
 
 
 //
-// Add various APIs, according to the features.json configuration
+// Add various APIs, according to the config.json configuration
 //
 if (config.exposeClipboard())      window.apexce.clipboard      = require('electron').clipboard;
 if (config.exposeDialog())         window.apexce.dialog         = require('electron').remote.dialog;
-if (config.exposeFs())             window.apexce.fs             = require('./fs.js');
+if (config.exposeFs())             window.apexce.fs             = require(__base + 'foreground/fs.js');
 if (config.exposeGlobalShortcut()) window.apexce.globalShortcut = require('electron').remote.globalShortcut;
 if (config.exposeMenu())           window.apexce.Menu           = require('electron').remote.Menu;
 if (config.exposeMenu())           window.apexce.MenuItem       = require('electron').remote.MenuItem;
 if (config.exposeIpcRenderer())    window.apexce.ipcRenderer    = ipcRenderer;
 if (config.exposeNativeImage())    window.apexce.nativeImage    = require('electron').nativeImage;
-if (config.exposePrint())          window.apexce.print          = require('./print.js');
-if (config.exposeProcessInfo())    window.apexce.processInfo    = require('./processInfo.js');
+if (config.exposePrint())          window.apexce.print          = require(__base + 'foreground/print.js');
+if (config.exposeProcessInfo())    window.apexce.processInfo    = require(__base + 'foreground/processInfo.js');
 if (config.exposeShell())          window.apexce.shell          = require('electron').shell;
-if (config.exposeWebFrame())       window.apexce.webFrame       = require('./webFrame.js');
+if (config.exposeWebFrame())       window.apexce.webFrame       = require(__base + 'foreground/webFrame.js');

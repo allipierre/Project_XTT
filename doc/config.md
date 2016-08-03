@@ -1,6 +1,6 @@
-#features.json
+#config.json
 
-A quick overview of the `features.json` configuration file.
+A quick overview of the `config.json` configuration file.
 
 Please be very careful when activating any of those features, as giving your APEX application to client resources always has a security impact.
 
@@ -8,25 +8,27 @@ Therefor deactivate all but those really necessary features.
 
 Here are all the options with their default value
 
-	{
-	  "configName"          : "Default Configuration File"
-	, "startURL"            : "https://apex.oracle.com/pls/apex/f?p=APEXCE"
-	, "urlBlackList"        : []
-	, "exposeClipboard"     : false
-	, "exposeDialog"        : false
-	, "exposeFs"            : false
-	, "exposeGlobalShortcut": false
-	, "exposeIpcRenderer"   : false
-	, "exposeMenu"          : false
-	, "exposeNativeImage"   : false
-	, "exposePrint"         : false
-	, "exposeProcessInfo"   : false
-	, "exposeShell"         : false
-	, "exposeWebFrame"      : false
-	, "allowDevTools"       : false
-	, "openDevToolsRenderer": false
-	, "openDevToolsWebview" : false
-	}
+```
+{
+    "configName": "Default Configuration File",
+    "startURL": "https://apex.oracle.com/pls/apex/f?p=APEXCE",
+    "urlBlackList": [],
+    "exposeClipboard": true,
+    "exposeDialog": true,
+    "exposeFs": true,
+    "exposeGlobalShortcut": false,
+    "exposeIpcRenderer": true,
+    "exposeMenu": false,
+    "exposeNativeImage": false,
+    "exposePrint": true,
+    "exposeProcessInfo": true,
+    "exposeShell": true,
+    "exposeWebFrame": true,
+    "allowDevTools": true,
+    "openDevToolsRenderer": false,
+    "openDevToolsWebview": false
+}
+```
 
 ###configName
 Just a dummy option to put a descriptive name in your file, in case you juggle with different files for different setups.

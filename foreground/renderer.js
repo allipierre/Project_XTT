@@ -8,6 +8,11 @@
  * @summary   Electron Renderer process.
  *
  */
+
+ // global base path for renderer process
+ const path = require('path');
+ global.__base = path.normalize(__dirname + '/../');
+
 (function(require) { 'use strict'
 
   // ---------------------------------------------------------------------------
@@ -29,7 +34,7 @@
   const fs = require('fs');
 
   // get general settings of this app
-  const config = require('../common/config.js');
+  const config = require(__base + 'common/config.js');
 
 
   // ---------------------------------------------------------------------------

@@ -2,7 +2,7 @@
  * APEX Client Extension Browser
  *
  * This module provides some utility functions to determine which options should
- * be enabled, according to the features.json file.
+ * be enabled, according to the config.json file.
  * Main and Renderer process (and its Webview preload) use those functions and
  * provide only those APIs which should be available.
  *
@@ -13,70 +13,73 @@
 //
 // load config settings
 //
-const configJson = require('../features.json');
+const configJson = require(__base + 'config.json');
 
-exports.isActiveForUrl = function (pUrl) {
-  // check configJson.urlBlackList
-  return true;
-}
+exports.isActiveForUrl = function(pUrl) {
+    // check configJson.urlBlackList
+    return true;
+};
 
-exports.startURL = function () {
-  return configJson.startURL;
-}
+exports.appTitle = function() {
+    return configJson.appTitle;
+};
 
-exports.exposeClipboard = function () {
-  return configJson.exposeClipboard;
-}
+exports.startURL = function() {
+    return configJson.startURL;
+};
 
-exports.exposeDialog = function () {
-  return configJson.exposeDialog;
-}
+exports.exposeClipboard = function() {
+    return configJson.exposeClipboard;
+};
 
-exports.exposeFs = function () {
-  return configJson.exposeFs;
-}
+exports.exposeDialog = function() {
+    return configJson.exposeDialog;
+};
 
-exports.exposeGlobalShortcut = function () {
-  return configJson.exposeGlobalShortcut;
-}
+exports.exposeFs = function() {
+    return configJson.exposeFs;
+};
 
-exports.exposeIpcRenderer = function () {
-  return configJson.exposeIpcRenderer;
-}
+exports.exposeGlobalShortcut = function() {
+    return configJson.exposeGlobalShortcut;
+};
 
-exports.exposeMenu = function () {
-  return configJson.exposeMenu;
-}
+exports.exposeIpcRenderer = function() {
+    return configJson.exposeIpcRenderer;
+};
 
-exports.exposeNativeImage = function () {
-  return configJson.exposeNativeImage;
-}
+exports.exposeMenu = function() {
+    return configJson.exposeMenu;
+};
 
-exports.exposePrint = function () {
-  return configJson.exposePrint;
-}
+exports.exposeNativeImage = function() {
+    return configJson.exposeNativeImage;
+};
 
-exports.exposeProcessInfo = function () {
-  return configJson.exposeProcessInfo;
-}
+exports.exposePrint = function() {
+    return configJson.exposePrint;
+};
 
-exports.exposeShell = function () {
-  return configJson.exposeShell;
-}
+exports.exposeProcessInfo = function() {
+    return configJson.exposeProcessInfo;
+};
 
-exports.exposeWebFrame = function () {
-  return configJson.exposeWebFrame;
-}
+exports.exposeShell = function() {
+    return configJson.exposeShell;
+};
 
-exports.allowDevTools = function () {
-  return configJson.allowDevTools;
-}
+exports.exposeWebFrame = function() {
+    return configJson.exposeWebFrame;
+};
 
-exports.openDevToolsRenderer = function () {
-  return configJson.openDevToolsRenderer;
-}
+exports.allowDevTools = function() {
+    return configJson.allowDevTools;
+};
 
-exports.openDevToolsWebview = function () {
-  return configJson.openDevToolsWebview;
-}
+exports.openDevToolsRenderer = function() {
+    return configJson.openDevToolsRenderer;
+};
 
+exports.openDevToolsWebview = function() {
+    return configJson.openDevToolsWebview;
+};

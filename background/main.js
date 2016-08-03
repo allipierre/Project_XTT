@@ -9,8 +9,12 @@
  *
  */
 
+ // global base path for main process
+ const path = require('path');
+ global.__base = path.normalize(__dirname + '/../');
+
 // get app configuration settings
-const config = require('../common/config.js');
+const config = require(__base + 'common/config.js');
 
 // grab some modules
 const { app, BrowserWindow, ipcMain } = require('electron');
@@ -25,7 +29,7 @@ const mainIdx   = 0;
 var   windowMgr = [];
 
 // initialize application menu
-require('./application-menu.js');
+require(__base + 'background/application-menu.js');
 
 
 // Quit when all windows are closed.
@@ -47,11 +51,12 @@ app.on('ready', function() {
     "width": 1280, // init width
     "height": 800, // init height
     "resizable": true,
-    "useContentSize": true
+    "useContentSize": true,
+    "title": config.appTitle()
   });
 
   // and load the index.html of the app.
-  windowMgr[mainIdx].loadURL('file://' + __dirname + '/../foreground/index.html');
+  windowMgr[mainIdx].loadURL('file://' + __base + 'foreground/index.html');
 
   // Open the DevTools
   if (config.openDevToolsRenderer()) windowMgr[mainIdx].webContents.openDevTools({mode:"bottom"});
@@ -114,11 +119,12 @@ ipcMain.on('windowMgrOpen', function(event, pUrl, pFrameName, pOptions, pParentI
     "width": 800, // init width
     "height": 600, // init height
     "resizable": true,
-    "useContentSize": true
+    "useContentSize": true,
+    "title": config.appTitle()
   });
 
   // and load the index.html of the app.
-  windowMgr[vIdx].loadURL('file://' + __dirname + '/../foreground/index.html');
+  windowMgr[vIdx].loadURL('file://' + __base + 'foreground/index.html');
 
   // once the webcontents (and the webview) is set up we trigger the load of the
   // actual page and also set the parent-id, which in turn creates window.opener
@@ -205,5 +211,3 @@ ipcMain.on('fs.readFileSync', (event, file, options) => {
     event.returnValue = 'empty filename received';
   }
 });
-
-
