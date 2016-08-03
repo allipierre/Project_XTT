@@ -9,6 +9,10 @@
 * read i.e. scanner data when connected to a serial port
 * provide a browser-like start-app (favorites, URL/Search-Field, recent pages)
 * provide Mac+Windows Release with prebuilt binaries (installer for windows)
+* general logging functions, which can be activated/deactivated via config.json
+* add electron systemPreferences functionalities
+* add electron DownloadItem (download manager)
+* add electron desktopCapturer for capturing videos of running app
 
 # Questions
 
