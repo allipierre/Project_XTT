@@ -11,6 +11,7 @@ Here are all the options with their default value
 ```
 {
     "configName": "Default Configuration File",
+		"appTitle": "APEX Client Extension",
     "startURL": "https://apex.oracle.com/pls/apex/f?p=APEXCE",
     "urlBlackList": [],
     "exposeClipboard": true,
@@ -32,6 +33,9 @@ Here are all the options with their default value
 
 ###configName
 Just a dummy option to put a descriptive name in your file, in case you juggle with different files for different setups.
+
+###appTitle
+The initial App Title that will be loaded when starting the ACE Browser.
 
 ###startURL
 The initial Page/App that will be loaded when starting the ACE Browser.
