@@ -11,7 +11,7 @@ Here are all the options with their default value
 ```
 {
     "configName": "Default Configuration File",
-		"appTitle": "APEX Client Extension",
+    "appTitle": "APEX Client Extension",
     "startURL": "https://apex.oracle.com/pls/apex/f?p=APEXCE",
     "urlBlackList": [],
     "exposeClipboard": true,
