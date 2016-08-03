@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html>
 
-  <head>
+<head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="./renderer.css" type="text/css" />
-  </head>
+    <link rel="stylesheet" href="./loading.css" type="text/css" />
+</head>
 
-  <body style="overflow: hidden">
-      <!-- create a webview without content, the actual target-url will be loaded once the webview is initialised -->
-      <webview id="ACE-webview" src="data:text/plain" autosize="on" allowpopups preload="./preload.js" ></webview>
-  </body>
+<body style="overflow: hidden">
+    <!-- loading animation -->
+    <div id="loading-content">
+        <div id="loader-wrapper">
+            <div id="loader"></div>
+        </div>
+    </div>
+    <!-- create a webview without content, the actual target-url will be loaded once the webview is initialised -->
+    <webview id="ACE-webview" src="data:text/plain" autosize="on" allowpopups preload="./preload.js"></webview>
+</body>
 
-  <script type="text/javascript" src="./renderer.js"></script>
+<script type="text/javascript" src="./renderer.js"></script>
 
 </html>

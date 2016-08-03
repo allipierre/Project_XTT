@@ -55,6 +55,11 @@
     });
   }
 
+  // remove loading animation
+  webview.addEventListener('did-stop-loading', function(e) {
+    document.getElementById("loading-content").remove();
+  });
+
   // update window title with current page title
   webview.addEventListener('page-title-updated', function(e) {
     remote.getCurrentWindow().setTitle(e.title);
