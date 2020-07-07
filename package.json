@@ -40,6 +40,6 @@
     "electron-winstaller": "^2.3.4"
   },
   "dependencies": {
-    "electron": "^1.4.6"
+    "electron": "^9.1.0"
   }
 }
